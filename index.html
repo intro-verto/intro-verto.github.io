@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Interview Questions</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+    <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">QA Interview Questions</h1>
+        
+        <button id="toggleAll" class="mb-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-300 w-full">
+            Показать все ответы
+        </button>
+
+        <div class="space-y-4">
+            <div class="question-container">
+                <div class="question bg-white p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">Что такое баг?</h2>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="answer hidden mt-4 text-gray-600 border-t pt-4">
+                        Баг - это отклонение фактического результата от ожидаемого результата.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question bg-white p-4 rounded-lg shadow-md cursor-pointer hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-lg font-semibold text-gray-800">Что такое тестирование?</h2>
+                        <svg class="w-6 h-6 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </div>
+                    <div class="answer hidden mt-4 text-gray-600 border-t pt-4">
+                        Тестирование - это проверка соответствия между реальным и ожидаемым поведением программы, осуществляемая на конечном наборе тестов, выбранном определенным образом и включает в себя:
+                        <ul class="list-disc pl-6 mt-2">
+                            <li>планирование работ (Test Management)</li>
+                            <li>проектирование тестов (Test Design)</li>
+                            <li>выполнение тестирования (Test Execution)</li>
+                            <li>анализ полученных результатов (Test Analysis)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questions = document.querySelectorAll('.question');
+            const toggleAllButton = document.getElementById('toggleAll');
+            let allExpanded = false;
+
+            questions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.querySelector('.answer');
+                    const arrow = this.querySelector('svg');
+                    
+                    answer.classList.toggle('hidden');
+                    arrow.classList.toggle('rotate-180');
+                });
+            });
+
+            toggleAllButton.addEventListener('click', function() {
+                const answers = document.querySelectorAll('.answer');
+                const arrows = document.querySelectorAll('.question svg');
+                
+                answers.forEach(answer => {
+                    if (allExpanded) {
+                        answer.classList.add('hidden');
+                    } else {
+                        answer.classList.remove('hidden');
+                    }
+                });
+
+                arrows.forEach(arrow => {
+                    if (allExpanded) {
+                        arrow.classList.remove('rotate-180');
+                    } else {
+                        arrow.classList.add('rotate-180');
+                    }
+                });
+
+                toggleAllButton.textContent = allExpanded ? 'Показать все ответы' : 'Скрыть все ответы';
+                allExpanded = !allExpanded;
+            });
+        });
+    </script>
+</body>
+</html>
