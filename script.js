@@ -1,39 +1,49 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Находим все кнопки с вопросами
-    const questionButtons = document.querySelectorAll('.question-btn');
-    const toggleAllButton = document.querySelector('.toggle-all-btn');
+    const toggleAllBtn = document.querySelector('.toggle-all-btn');
+    const questionBtns = document.querySelectorAll('.question-btn');
+    const columnsContainer = document.querySelector('.columns-container');
+    const scrollIndicators = document.querySelectorAll('.scroll-indicator');
     let isAllExpanded = false;
 
-    // Функция для переключения состояния одного вопроса
-    function toggleQuestion(button) {
-        const answer = button.nextElementSibling;
-        button.classList.toggle('active');
-        answer.classList.toggle('show');
-    }
+    // Обработка кнопки "Показать все"
+    toggleAllBtn.addEventListener('click', function() {
+        isAllExpanded = !isAllExpanded;
+        questionBtns.forEach(btn => {
+            const answer = btn.nextElementSibling;
+            answer.style.display = isAllExpanded ? 'block' : 'none';
+            btn.classList.toggle('active', isAllExpanded);
+        });
+        toggleAllBtn.textContent = isAllExpanded ? 'Скрыть все' : 'Показать все';
+    });
 
-    // Обработчик клика по кнопке вопроса
-    questionButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleQuestion(button);
+    // Обработка кнопок вопросов
+    questionBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const isVisible = answer.style.display === 'block';
+            answer.style.display = isVisible ? 'none' : 'block';
+            this.classList.toggle('active');
         });
     });
 
-    // Обработчик клика по кнопке "Показать/Скрыть все"
-    toggleAllButton.addEventListener('click', () => {
-        isAllExpanded = !isAllExpanded;
-        
-        questionButtons.forEach(button => {
-            const answer = button.nextElementSibling;
-            if (isAllExpanded) {
-                button.classList.add('active');
-                answer.classList.add('show');
-            } else {
-                button.classList.remove('active');
-                answer.classList.remove('show');
-            }
-        });
+    // Обработка горизонтальной прокрутки
+    columnsContainer.addEventListener('scroll', function() {
+        const scrollPosition = this.scrollLeft;
+        const maxScroll = this.scrollWidth - this.clientWidth;
+        const threshold = maxScroll / 2;
 
-        toggleAllButton.textContent = isAllExpanded ? 'Свернуть все' : 'Показать все';
+        scrollIndicators[0].classList.toggle('active', scrollPosition < threshold);
+        scrollIndicators[1].classList.toggle('active', scrollPosition >= threshold);
+    });
+
+    // Обработка клика по индикаторам
+    scrollIndicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            const columnWidth = columnsContainer.querySelector('.column').offsetWidth;
+            columnsContainer.scrollTo({
+                left: index * columnWidth,
+                behavior: 'smooth'
+            });
+        });
     });
 });

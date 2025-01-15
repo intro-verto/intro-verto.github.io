@@ -1,29 +1,44 @@
 body {
     font-family: Arial, sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
+    margin: 0;
     padding: 20px;
-    line-height: 1.4;
-    background-color: #f5f6fa;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
-    color: #2c3e50;
-    font-size: 24px;
-    margin-bottom: 20px;
     text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px 0;
+    z-index: 1;
+    border-bottom: 2px solid #3498db;
+    font-size: 20px;
 }
 
 .controls {
     text-align: center;
     margin-bottom: 20px;
+    position: sticky;
+    left: 0;
+    right: 0;
 }
 
 .toggle-all-btn {
+    padding: 8px 16px;
     background-color: #3498db;
     color: white;
     border: none;
-    padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
@@ -34,32 +49,90 @@ h1 {
     background-color: #2980b9;
 }
 
-.question-container {
-    margin-bottom: 8px;
+/* Индикаторы прокрутки */
+.scroll-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    position: sticky;
+    left: 0;
+    right: 0;
+}
+
+.scroll-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: background-color 0.3s;
+}
+
+.scroll-indicator.active {
+    background-color: #3498db;
+}
+
+.columns-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    flex: 1;
+    min-height: calc(100vh - 120px);
+    width: 100%;
+    min-width: 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.column {
+    flex: 0 0 min(800px, 90vw);
     background: white;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    height: 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+}
+
+.question-container {
+    margin-bottom: 12px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    transition: border-color 0.2s;
+}
+
+.question-container:hover {
+    border-color: #3498db;
 }
 
 .question-btn {
     width: 100%;
     text-align: left;
-    padding: 8px 12px;
+    padding: 12px 15px;
     background: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 500;
     color: #2c3e50;
+    transition: all 0.2s;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background-color 0.2s;
 }
 
 .question-btn:hover {
     background-color: #f8f9fa;
+    color: #3498db;
+}
+
+.question-btn.active {
+    color: #3498db;
+    font-weight: 500;
 }
 
 .question-btn::after {
@@ -74,28 +147,62 @@ h1 {
 }
 
 .answer-container {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    padding: 0 12px;
+    display: none;
+    padding: 10px;
+    background-color: #fff;
     font-size: 14px;
-    color: #34495e;
+    line-height: 1.5;
 }
 
 .answer-container.show {
-    max-height: 2000px;
-    padding: 8px 12px 12px;
+    display: block;
 }
 
 .answer-container ul {
-    margin: 8px 0;
+    margin: 5px 0;
     padding-left: 20px;
 }
 
 .answer-container li {
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
-.answer-container br + ul {
-    margin-top: 0;
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Padding adjustment for mobile */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .column {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+    
+    h2 {
+        font-size: 18px;
+        padding: 12px 0;
+    }
 }
