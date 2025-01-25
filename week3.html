@@ -1,0 +1,172 @@
+<h2>Третья неделя</h2>
+
+<div class="question-container">
+    <button class="question-btn">Что такое JSON?</button>
+    <div class="answer-container">JSON (JavaScript Object Notation) — это текстовый формат для хранения и передачи данных, независимый от языка программирования.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какой синтаксис JSON-объекта?</button>
+    <div class="answer-container">В JSON-объекте:
+        <ul>
+            <li>Ключ и значение разделяются двоеточием `:`</li>
+            <li>Пары ключ-значение разделяются запятыми `,`</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какие типы данных есть в JSON?</button>
+    <div class="answer-container">В JSON есть два вида типов данных:
+        <ul>
+            <li>Примитивные: строка, число, логический (true/false), null</li>
+            <li>Структурные: объект, массив</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какие типы данных берутся в кавычки в JSON, а какие нет?</button>
+    <div class="answer-container">
+        <ul>
+            <li><strong>В кавычки:</strong> строки</li>
+            <li><strong>Без кавычек:</strong> числа, логические значения (true, false), null, объекты, массивы</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">В чём отличие HTTP от HTTPS?</button>
+    <div class="answer-container">HTTP передаёт данные в открытом виде. HTTPS шифрует данные, обеспечивая безопасность передачи.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что такое HTTP-запрос и из чего он состоит?</button>
+    <div class="answer-container">HTTP-запрос - это сообщение от клиента серверу для выполнения действия: получить данные, отправить информацию или управлять ресурсами.
+        <br><br>
+        Состоит из:
+        <ul>
+            <li><strong>Стартовая строка</strong>: метод, URL, версия протокола</li>
+            <li><strong>Заголовки</strong>: метаданные запроса</li>
+            <li><strong>Пустая строка</strong>: отделяет заголовки от тела</li>
+            <li><strong>Тело</strong> (опционально): передача данных (например, JSON)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Перечисли 5 методов HTTP-запросов и для чего они используются</button>
+    <div class="answer-container">
+        <ul>
+            <li><strong>GET</strong>: запрос данных</li>
+            <li><strong>POST</strong>: отправка данных на сервер</li>
+            <li><strong>PUT</strong>: создание/замена ресурса</li>
+            <li><strong>PATCH</strong>: частичное обновление ресурса</li>
+            <li><strong>DELETE</strong>: удаление ресурса</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Чем отличается PUT от PATCH?</button>
+    <div class="answer-container">
+        <ul>
+            <li><strong>PUT</strong>: заменяет весь ресурс. Пример: `{ "name": "John", "age": 30 }`</li>
+            <li><strong>PATCH</strong>: изменяет часть ресурса. Пример: `{ "age": 30 }`</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что такое Query-параметры?</button>
+    <div class="answer-container">Дополнительные параметры в URL после `?`. Формат: `key=value`, разделяются через `&`. Пример: `/search?query=test&page=1`.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Когда метод является идемпотентным?</button>
+    <div class="answer-container">Метод является идемпотентным, если повторный запрос не изменяет состояние системы после первого выполнения.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какие есть неидемпотентные методы?</button>
+    <div class="answer-container">
+        <ul>
+            <li><strong>POST</strong> — создаёт новый ресурс или вызывает действие, изменяющее состояние</li>
+            <li><strong>PATCH</strong> — частично обновляет ресурс, и результат может зависеть от каждого выполнения</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какие методы запроса используются в разных ситуациях?</button>
+    <div class="answer-container">
+        <ul>
+            <li>При переходе на главную страницу сайта: <strong>GET</strong> — для запроса ресурса</li>
+            <li>При авторизации на сайте: <strong>POST</strong> — для отправки данных (логин и пароль)</li>
+            <li>При редактировании даты рождения: <strong>PATCH</strong> — для частичного изменения ресурса</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Какие есть категории кодов ответов и что они означают?</button>
+    <div class="answer-container">
+        <ul>
+            <li>1xx — Информационные: запрос получен, обработка продолжается</li>
+            <li>2xx — Успешные: запрос выполнен успешно</li>
+            <li>3xx — Перенаправления: серверу нужно перенаправить клиента</li>
+            <li>4xx — Ошибки клиента: некорректный запрос к серверу</li>
+            <li>5xx — Ошибки сервера: сервер не может выполнить запрос</li>
+        </ul>
+    </div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 200?</button>
+    <div class="answer-container">200 (OK) — запрос выполнен успешно. Этот код возвращается при успешном переходе на страницу сайта.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 201?</button>
+    <div class="answer-container">201 (Created) — создан новый ресурс (например, после POST-запроса). Этот код возвращается при успешной регистрации пользователя на сайте.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 301?</button>
+    <div class="answer-container">301 (Moved Permanently) — ресурс перемещен навсегда на новый URL.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 400?</button>
+    <div class="answer-container">400 (Bad Request) — запрос неправильный (ошибка синтаксиса, неверные данные).</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 401?</button>
+    <div class="answer-container">401 (Unauthorized) — требуется авторизация.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 403?</button>
+    <div class="answer-container">403 (Forbidden) — доступ к ресурсу запрещен.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 404?</button>
+    <div class="answer-container">404 (Not Found) — ресурс не найден. Этот код возвращается при переходе на несуществующую страницу.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 500?</button>
+    <div class="answer-container">500 (Internal Server Error) — ошибка сервера. Это код, который меньше всего хочется увидеть на главной странице сайта после релиза.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 502?</button>
+    <div class="answer-container">502 (Bad Gateway) — некорректный ответ от шлюза или прокси-сервера.</div>
+</div>
+
+<div class="question-container">
+    <button class="question-btn">Что означает код ответа 503?</button>
+    <div class="answer-container">503 (Service Unavailable) — сервис временно недоступен (например, из-за перегрузки).</div>
+</div>
