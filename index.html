@@ -3,28 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шпаргалка для собеседования QA</title>
+    <title>FAQ для QA</title>
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="particles-js"></div>
     <h1>Шпаргалка для собеседования QA</h1>
     
     <div class="controls">
         <button class="toggle-all-btn">Показать все</button>
+        <button class="start-quiz-btn">Пройти тестирование</button>
     </div>
 
     <div class="scroll-indicators">
-        <div class="scroll-indicator active"></div>
-        <div class="scroll-indicator"></div>
-        <div class="scroll-indicator"></div>
+        <button class="scroll-indicator active">
+            <span class="indicator-number">1</span>
+            <span class="indicator-text">Неделя 1</span>
+        </button>
+        <div class="indicator-arrow">→</div>
+        <button class="scroll-indicator">
+            <span class="indicator-number">2</span>
+            <span class="indicator-text">Неделя 2</span>
+        </button>
+        <div class="indicator-arrow">→</div>
+        <button class="scroll-indicator">
+            <span class="indicator-number">3</span>
+            <span class="indicator-text">Неделя 3</span>
+        </button>
+        <div class="indicator-arrow">→</div>
+        <button class="scroll-indicator">
+            <span class="indicator-number">4</span>
+            <span class="indicator-text">Доп. темы</span>
+        </button>
     </div>
 
     <div class="columns-container">
         <div id="week1-content" class="column"></div>
         <div id="week2-content" class="column"></div>
         <div id="week3-content" class="column"></div>
+        <div id="additional-content" class="column"></div>
     </div>
 
+    <!-- Modal Quiz -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-content">
+            <div class="quiz-header">
+                <div class="quiz-nav">
+                    <!-- Временно скрыты
+                    <div class="week-buttons">
+                        <button class="quiz-btn week-btn" data-week="1">Неделя 1</button>
+                        <button class="quiz-btn week-btn" data-week="2">Неделя 2</button>
+                        <button class="quiz-btn week-btn" data-week="3">Неделя 3</button>
+                    </div>
+                    <button class="quiz-btn all-questions-btn">Все вопросы</button>
+                    -->
+                    <div class="development-message">
+                        <div class="dev-icon">🛠️</div>
+                        <h3>Функционал в разработке</h3>
+                        <p>Мы работаем над тем, чтобы сделать тестирование максимально полезным и интересным!</p>
+                        <div class="loading-animation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="quiz-content">
+                <!-- Quiz questions will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js',
+        {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#3498db"
+                },
+                "shape": {
+                    "type": "circle"
+                },
+                "opacity": {
+                    "value": 0.2,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#3498db",
+                    "opacity": 0.1,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
